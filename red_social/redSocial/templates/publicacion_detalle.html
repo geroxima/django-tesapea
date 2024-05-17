@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+  <p>{{ publicacion.contenido }}</p>
+  <p>- {{ publicacion.fecha }}</p>
+  <h3>Comentarios</h3>
+  {% for comentario in comentarios %}
+  <div>
+    <p>{{ comentario.contenido }}</p>
+    <p>- {{ comentario.fecha }}</p>
+  </div>
+  {% endfor %}
+  <h3>Agregar comentario</h3>
+  <form method="post">
+    {% csrf_token %} {{ form_comentario.as_p }}
+    <button type="submit">Comentar</button>
+  </form>
+  {% endblock %}
+</div>

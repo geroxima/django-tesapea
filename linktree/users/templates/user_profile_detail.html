@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <title>{{ profile.name }} {{ profile.lastname }} - Tesape'a Django</title>
+    <style>
+      .profile-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .img-top {
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        aspect-ratio: 1/1;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="profile-section">
+      <img
+        src="{{ profile.profile_picture }}"
+        class="img-top"
+        alt="{{ profile.name }} {{ profile.lastname }}"
+      />
+
+      <h1>{{ profile.name }} {{ profile.lastname }}</h1>
+      <p class="card-text">{{ profile.short_description }}</p>
+
+      <div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Birthday: {{ profile.birthday }}</li>
+          <li class="list-group-item">
+            Contact Number:
+            <a href="tel:{{ profile.phone_number }}"
+              >{{ profile.phone_number }}</a
+            >
+          </li>
+          <li class="list-group-item">
+            Email:
+            <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>

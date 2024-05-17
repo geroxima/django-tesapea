@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>LinkTree Clone - Tesape'a Django</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <style>
+      .card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 18rem;
+        margin: 1rem;
+      }
+      .card-img-top {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+      }
+      .profile-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Tesape'a LinkTree 🌳🟡</h1>
+    <p>An easy way to connect</p>
+
+    <div class="profile-container">
+      {% for profile in profiles %}
+      <div class="card">
+        <img
+          src="{{ profile.profile_picture }}"
+          class="card-img-top"
+          alt="{{ profile.name }} {{ profile.lastname }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ profile.name }} {{ profile.lastname }}</h5>
+          <a href="{% url 'user_profile_detail' profile.id %}"> Go to page</a>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </body>
+</html>

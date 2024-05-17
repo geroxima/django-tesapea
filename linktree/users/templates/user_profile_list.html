@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <title>Profile List - Tesape'a Django</title>
+    <style>
+      .card {
+        margin: 1rem;
+        border: 1px solid #074b4e;
+        padding: 1rem;
+        border-radius: 0.5rem;
+      }
+
+      .card-img-top {
+        border-radius: 0.5rem;
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+      }
+    </style>
+  </head>
+  <h1>List of users in Tesape'a LinkTree 🌳🟡</h1>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between">
+    {% for profile in profiles %}
+    <div class="card" style="width: 18rem; margin: 1rem">
+      <img
+        src="{{ profile.profile_picture }}"
+        class="card-img-top"
+        alt="{{ profile.name }} {{ profile.lastname }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ profile.name }} {{ profile.lastname }}</h5>
+        <a href="{% url 'user_profile_detail' profile.id %}"> Go to page</a>
+        <p class="card-text">{{ profile.short_description }}</p>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</html>

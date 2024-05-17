@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Publicaciones</h1>
+{% for publicacion in publicaciones %}
+<div>
+  <p>{{ publicacion.contenido }}</p>
+  <p>{{ publicacion.fecha }}</p>
+  <a href="{% url 'publicacion_detalle' publicacion.pk %}">Ver detalles</a>
+</div>
+{% endfor %} {% endblock %}
